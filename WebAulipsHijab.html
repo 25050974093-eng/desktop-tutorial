@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aulips Hijab</title>
+<!-- Font & ikon -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ===== 1. VARIABEL & RESET ===== */
+:root { --bg:#fdf8f5; --ink:#3a281e; --mut:#7d675b; --tc:#b0614f; --tc2:#98503f; --soft:#f6ebe4; --line:#efdfd5; --dk:#3d2b20 }
+* { box-sizing: border-box; margin: 0 }
+html { scroll-behavior: smooth }
+body { font-family: 'Plus Jakarta Sans',sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5 }
+h1, h2, .logo b, .fh { font-family: 'Playfair Display',serif }
+button, input, select, textarea { font: inherit; color: inherit } button { cursor: pointer; border: 0; background: none }
+a { color: inherit; text-decoration: none }
+:focus-visible { outline: 2px solid var(--tc); outline-offset: 2px }
+
+/* ===== 2. LAYOUT UMUM ===== */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px }
+section.k { padding: 80px 0 }
+.kh { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap }
+.lab { color: var(--tc); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: 15px }
+.kh h2, .fq h2 { font-size: 42px; line-height: 1.2 }
+
+/* ===== 3. KOMPONEN UMUM ===== */
+.pill { background: var(--soft); border: 1px solid var(--line); border-radius: 99px; padding: 11px 20px; font-weight: 600; font-size: 15px }
+.btn { display: inline-block; padding: 13px 26px; border-radius: 14px; font-weight: 700; font-size: 15px }
+.b1 { background: linear-gradient(135deg,#b96a57,#a35544); color: #fff; box-shadow: 0 10px 22px rgba(176,97,79,.3) }
+.b2 { background: #fff; border: 1px solid var(--line); margin-left: 12px }
+.f { width: 100%; border: 1px solid var(--line); border-radius: 14px; padding: 13px 15px; background: #fff; outline: 0; margin-top: 5px }
+.f:focus { border-color: var(--tc) }
+label.l { display: block; font-size: 13px; font-weight: 600; margin-top: 14px }
+.sub { width: 100%; margin-top: 20px; background: var(--tc); color: #fff; font-weight: 700; padding: 15px; border-radius: 14px } .sub:hover { background: var(--tc2) }
+.sub:disabled { opacity: .4 }
+.q { display: flex; align-items: center; gap: 14px; margin-top: 16px; font-weight: 700 }
+.q button { width: 34px; height: 34px; border-radius: 10px; background: var(--soft) }
+.stx { color: #e0a43a; letter-spacing: 2px }
+.sp { display: flex; gap: 4px; margin-top: 6px } .sp button { font-size: 28px; color: #d9c9be; line-height: 1 } .sp .on { color: #e0a43a }
+.em { text-align: center; color: var(--mut); padding: 22px 16px; font-size: 13px }
+.tt { position: fixed; bottom: 18px; right: 18px; z-index: 80; background: var(--dk); color: #fff; font-size: 14px; padding: 13px 18px;
+  border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.25); max-width: 300px }
+
+/* ===== 4. OVERLAY & MODAL ===== */
+.ov { position: fixed; inset: 0; z-index: 50; background: rgba(61,43,32,.55); display: none; align-items: center; justify-content: center; padding: 14px; backdrop-filter: blur(4px) }
+.ov.on { display: flex }
+.md { background: #fff; border-radius: 28px; width: 100%; max-width: 440px; max-height: 92vh; overflow: auto; padding: 30px; position: relative }
+.md.w { max-width: 860px }
+.md h3 { font: 700 26px 'Playfair Display',serif; margin-bottom: 16px }
+.xx { position: absolute; top: 16px; right: 20px; font-size: 20px; color: var(--mut) }
+.dr { justify-content: flex-end; align-items: stretch; padding: 0 }
+.dr .md { max-width: 430px; height: 100vh; max-height: none; border-radius: 0; display: flex; flex-direction: column }
+
+/* ===== 5. BAR PROMO ===== */
+.promo { background: linear-gradient(90deg,#a85a48,#b97d88); color: #fff; font-size: 13px; text-align: center; padding: 8px 16px }
+.promo span { background: rgba(255,255,255,.28); padding: 3px 11px; border-radius: 99px; font-weight: 700; margin-left: 4px }
+
+/* ===== 6. HEADER ===== */
+header { position: sticky; top: 0; z-index: 30; background: rgba(253,248,245,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line) }
+.hd { display: flex; align-items: center; gap: 20px; height: 64px; position: relative }
+.logo { display: flex; align-items: center; gap: 11px }
+.logo i { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(145deg,#c97f6c,#9c4d3c); color: #fff; font: 700 18px 'Playfair Display',serif;
+  display: grid; place-items: center; font-style: normal; box-shadow: 0 0 0 3px #f6ebe4,0 5px 12px rgba(176,97,79,.35) }
+.logo i svg { display: block }
+.logo b { font-size: 22px; line-height: 1; display: block; letter-spacing: .01em; color: transparent;
+  background: linear-gradient(90deg,#3a281e 30%,#a85a48); -webkit-background-clip: text; background-clip: text }
+.logo small { font-size: 10px; letter-spacing: .14em; color: var(--tc); font-weight: 600; display: flex; align-items: center; gap: 7px; margin-top: 3px }
+.logo small::before { content: ""; width: 16px; height: 1px; background: var(--tc) }
+nav { display: flex; gap: 32px; margin: 0 auto; font-size: 15px; color: #5d4538 } nav a:hover { color: var(--tc) }
+.srch { position: relative; width: 100%; max-width: 520px; display: block }
+.srch i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--tc) }
+.srch input { width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 99px; padding: 13px 18px 13px 46px; outline: 0 }
+.sbar { display: none; border-top: 1px solid var(--line); padding: 10px 0 }
+.sbar.on { display: block }
+.ib { position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--soft); border: 1px solid var(--line); color: var(--tc);
+  font-size: 16px; display: grid; place-items: center; font-weight: 700 }
+.ib:hover { background: #f0ddd3 }
+.ib em { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; border-radius: 99px; background: var(--tc); color: #fff;
+  font: 700 11px/18px 'Plus Jakarta Sans'; font-style: normal; text-align: center; padding: 0 4px }
+.ic { display: flex; align-items: center; gap: 8px }
+.dw { position: relative }
+.dp { display: none; position: absolute; right: 0; top: calc(100% + 10px); width: 330px; max-width: calc(100vw - 32px); max-height: 400px; overflow: auto;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 14px 36px rgba(61,43,32,.16); z-index: 40 }
+.dp.on { display: block }
+.dh { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--line) }
+.dh button { font-size: 12px; color: var(--tc); font-weight: 600 }
+.ni { padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 13px } .ni b { display: block; font-size: 14px } .ni span { display: block; color: var(--mut) }
+.ni small { color: #a99a91 }
+.ni.nw { background: #fdf3ee }
+.lo { width: 100%; text-align: left; padding: 12px 16px; font-weight: 600; color: #a33; font-size: 14px }
+
+/* ===== 7. HERO ===== */
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 44px; align-items: center; padding: 48px 0 44px }
+.hero h1 { font-size: clamp(30px,3.9vw,48px); line-height: 1.12; font-weight: 700 }
+.hero p { font-size: 16px; color: #6b5448; max-width: 560px; margin: 18px 0 26px; line-height: 1.7 }
+.hc { background: #fff; border-radius: 26px; padding: 12px; box-shadow: 0 14px 40px rgba(120,70,50,.12) }
+.hp { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1.3/1 } .hp img, .pic img { width: 100%; height: 100%; object-fit: cover; display: block }
+
+/* ===== 8. FITUR UNGGULAN ===== */
+.feat { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.fg { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; padding: 26px 28px }
+.fi { display: flex; align-items: center; gap: 16px; justify-content: center }
+.fi i { width: 58px; height: 58px; border-radius: 50%; background: var(--soft); color: var(--tc); display: grid; place-items: center; font-size: 20px }
+.fi b { display: block; font-size: 16px } .fi small { color: var(--mut) }
+
+/* ===== 9. KATALOG PRODUK ===== */
+select.so { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; font-size: 17px }
+.chips { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0 40px }
+.chips button { background: #fff; border: 1px solid var(--line); padding: 14px 30px; border-radius: 99px; font-size: 17px }
+.chips .on { background: var(--tc); color: #fff; border-color: var(--tc); font-weight: 600; box-shadow: 0 6px 14px rgba(176,97,79,.3) }
+.grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 30px; padding: 18px; cursor: pointer; display: flex; flex-direction: column }
+.pic { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 1.15/1.2; background: var(--soft) }
+.tag { position: absolute; top: 14px; left: 14px; background: var(--tc); color: #fff; font-size: 13px; font-weight: 600; padding: 5px 14px; border-radius: 99px }
+.plus { position: absolute; right: 14px; bottom: 14px; width: 52px; height: 52px; border-radius: 50%; background: #fff; font-size: 22px; box-shadow: 0 3px 10px rgba(0,0,0,.18) }
+.mt { display: flex; justify-content: space-between; margin: 22px 8px 6px; font-size: 15px; font-weight: 600; color: var(--tc); text-transform: uppercase; letter-spacing: .04em }
+.mt s { text-decoration: none; color: var(--tc) }
+.card h3 { font-size: 18px; margin: 0 8px; font-weight: 600 } .card .d { margin: 2px 8px 0; font-size: 13px; color: var(--mut) }
+.pr { margin: 10px 8px 4px; font-weight: 700; color: var(--tc2); font-size: 18px } .pr s { font-weight: 400; color: #a99a91; font-size: 13px; margin-left: 6px }
+.ad { display: flex; gap: 8px; margin: 12px 8px 2px }
+.ad button { flex: 1; padding: 8px; border-radius: 10px; background: var(--soft); font-size: 13px; font-weight: 600 } .ad .x { color: #a33 }
+
+/* ===== 10. ULASAN PEMBELI ===== */
+.rs { display: flex; align-items: center; gap: 14px; margin: 26px 0 22px }
+.av { display: flex; align-items: center; gap: 6px; flex-wrap: wrap } .av b { font: 700 44px/1 'Playfair Display',serif; margin-right: 12px }
+.av small { color: var(--mut); margin-left: 6px }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px }
+.rc { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 20px; position: relative } .rc p { margin: 8px 0; color: #6b5448; font-size: 14px }
+.rc .rp { color: var(--tc); font-weight: 600 }
+.rh { display: flex; gap: 10px; align-items: center; margin-bottom: 6px }
+.rh i { width: 38px; height: 38px; border-radius: 50%; background: var(--soft); color: var(--tc2); display: grid; place-items: center; font: 700 16px 'Playfair Display',serif; font-style: normal }
+.rh small { display: block; color: var(--mut); font-size: 12px }
+.rx { position: absolute; top: 16px; right: 16px; font-size: 12px; color: #a33; font-weight: 600 }
+
+/* ===== 11. FAQ ===== */
+.fq { background: #fff; padding: 80px 0 } .fq .in { max-width: 1020px; margin: 0 auto } .fq h2 { text-align: center; margin-bottom: 46px }
+.fq .lab { text-align: center; display: block; margin-bottom: 6px }
+.qa { border: 1px solid var(--line); background: var(--bg); border-radius: 28px; padding: 24px 28px; margin-bottom: 22px }
+.qa b { display: flex; gap: 12px; align-items: center; font-size: 18px }
+.qa b i { width: 22px; height: 22px; border-radius: 50%; background: var(--tc); color: #fff; font-size: 12px; display: grid; place-items: center; font-style: normal }
+.qa p { margin: 6px 0 0 34px; color: #6b5448 }
+
+/* ===== 12. FOOTER ===== */
+footer { background: var(--dk); color: #f3e6dd; padding: 64px 0 28px }
+.fgd { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px }
+footer .fh { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #fff } footer a, footer p { display: block; margin-bottom: 12px; color: #eadbd0 }
+.fl { display: flex; align-items: center; gap: 12px; font: 700 28px 'Playfair Display',serif; color: #fff; margin-bottom: 18px }
+.fl i { width: 48px; height: 48px; border-radius: 50%; font-size: 22px; display: grid; place-items: center; font-style: normal;
+  background: linear-gradient(145deg,#c97f6c,#9c4d3c); box-shadow: 0 0 0 3px rgba(255,255,255,.14),0 5px 12px rgba(0,0,0,.25) }
+.fl i svg { display: block }
+.cp { border-top: 1px solid rgba(255,255,255,.14); margin-top: 30px; padding-top: 22px; font-size: 13px; color: #cdb9ac }
+
+/* ===== 13. POPUP LOGIN / DAFTAR ===== */
+.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--line); margin-bottom: 6px; font-weight: 700 }
+.tabs button { padding: 0 0 10px; color: var(--mut); border-bottom: 2px solid transparent } .tabs .on { color: var(--ink); border-color: var(--tc) }
+.er { background: #fbeceb; color: #a33; border-radius: 12px; padding: 10px 14px; font-size: 13px; margin-top: 12px; display: none }
+
+/* ===== 14. POPUP DETAIL PRODUK ===== */
+.dg { display: grid; grid-template-columns: 1fr 1fr; gap: 28px } .dg .pic { aspect-ratio: 1/1.1 }
+.sw { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px }
+.sw button { width: 38px; height: 38px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line) } .sw .on { box-shadow: 0 0 0 2px var(--tc) }
+.sz button { padding: 9px 16px; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; font-weight: 600 } .sz .on { background: var(--ink); color: #fff }
+
+/* ===== 15. KERANJANG ===== */
+.ci { display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 16px; padding: 10px; margin-bottom: 10px; font-size: 13px }
+.ci .pic { width: 58px; height: 66px; flex: none; border-radius: 12px; aspect-ratio: auto } .ci div.m { flex: 1; min-width: 0 }
+
+/* ===== 16. CHECKOUT & PEMBAYARAN ===== */
+.cg { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px }
+.g2, .g3 { display: grid; gap: 12px } .g2 { grid-template-columns: 1fr 1fr }
+.g3 { grid-template-columns: 1.2fr 1fr .8fr }
+.pm { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px } .pm label { position: relative; cursor: pointer }
+.pm input { position: absolute; opacity: 0 }
+.pm span { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--line); border-radius: 14px; padding: 13px; font-weight: 600; font-size: 14px }
+.pm input:checked+span { border-color: var(--tc); background: var(--soft); color: var(--tc2) } .pm input:focus-visible+span { outline: 2px solid var(--tc) }
+.sr { display: flex; justify-content: space-between; margin-top: 8px; font-size: 14px }
+.sr.tot { font-weight: 700; font-size: 17px; border-top: 1px solid var(--line); padding-top: 10px }
+.qr { text-align: center } .qr img { width: 100%; max-width: 280px; margin: 12px auto; display: block; border-radius: 16px; border: 1px solid var(--line) }
+.qr small { display: block; color: var(--mut); margin: 6px 0 }
+.qn { background: var(--soft); border-radius: 16px; padding: 40px 18px; margin: 12px 0; color: var(--mut); font-size: 13px }
+
+/* ===== 18. ADMIN: KELOLA KATALOG ===== */
+.mh { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px }
+.pill.up { cursor: pointer; display: inline-block }
+.mr { display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: 18px; padding: 10px; margin-bottom: 10px; flex-wrap: wrap }
+.mr .pic { width: 64px; height: 72px; flex: none; border-radius: 12px; aspect-ratio: auto } .mr .mi { flex: 1; min-width: 150px }
+.mr .mi small { display: block; color: var(--mut) } .mr>label { font-size: 12px; font-weight: 600; width: 110px } .mr>label .f { padding: 8px 10px; margin-top: 3px }
+.ma { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.ma button, .ma .pill { padding: 8px 14px; border-radius: 10px; background: var(--soft); font-size: 13px; font-weight: 600; border: 0; cursor: pointer }
+.ma .x { color: #a33 }
+
+/* ===== 19. RESPONSIF ===== */
+@media (max-width: 1000px) {
+  .hero { grid-template-columns: 1fr; padding: 32px 0 }
+  .grid, .fg, .fgd { grid-template-columns: repeat(2,1fr) }
+  nav { order: 5; width: 100%; margin: 0 0 12px; gap: 26px; overflow-x: auto; font-size: 15px }
+  .hd { height: auto; padding: 10px 0; flex-wrap: wrap; gap: 10px }
+  .ic { margin-left: auto }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px }
+  .grid { gap: 12px }
+  .card { padding: 10px; border-radius: 22px }
+  .btn { padding: 12px 20px; font-size: 15px }
+  .b2 { margin: 12px 0 0 }
+  .dg, .fgd { grid-template-columns: 1fr }
+  .logo b { font-size: 19px }
+  .logo i { width: 38px; height: 38px; font-size: 16px }
+  .logo small { font-size: 9px }
+  .cg, .rg { grid-template-columns: 1fr!important }
+  .kh h2 { font-size: 32px }
+  .mt { font-size: 12px; margin: 14px 4px 4px }
+  .card h3 { font-size: 15px }
+  .plus { width: 40px; height: 40px }
+  .pill { padding: 10px 14px }
+}
+</style>
+</head>
+<body>
+<!-- Logo (dipakai di header & footer) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="lg" viewBox="0 0 32 32">
+    <path d="M16 24c-4.2 0-6.3-2.4-6.5-5.3 3.2.7 5.8 2.4 6.5 5.3z" fill="#fff" opacity=".8"/>
+    <path d="M16 22c4 0 6-2.3 6.2-4.8-3 .6-5.5 2.2-6.2 4.8z" fill="#fff" opacity=".8"/>
+    <path d="M16 18v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M8.5 5c-.4 8.2 2.3 13.5 7.5 14 5.2-.5 7.9-5.8 7.5-14l-4 3.5L16 3.5 12.5 8.5z" fill="#fff"/>
+    <path d="M12.5 8.5c.3 4.2 1.8 7.5 3.5 10.5M19.5 8.5c-.3 4.2-1.8 7.5-3.5 10.5" stroke="#b0614f" stroke-width=".9" fill="none" opacity=".45" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<!-- ===== BAR PROMO ===== -->
+<div class="promo"><i class="fa-solid fa-truck-fast"></i> Gratis Ongkir Seluruh Indonesia Min. Pembelian Rp 150.000 | Kode Promo: <span>AULIPS10</span></div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="wrap hd">
+    <a href="#" class="logo">
+      <i aria-hidden="true"><svg viewBox="0 0 32 32" width="26" height="26"><use href="#lg"/></svg></i>
+      <div><b>Aulips Hijab</b><small>PREMIUM COLLECTION</small></div>
+    </a>
+    <nav><a href="#">Beranda</a><a href="#katalog" onclick="cat('')">Kategori</a><a href="#katalog">Katalog Produk</a><a href="#ulasan">Ulasan</a><a href="#bantuan">Bantuan</a></nav>
+    <!-- Ikon: cari, notifikasi, keranjang, akun -->
+    <div class="ic">
+      <button class="ib" onclick="tg('sb')" aria-label="Cari produk"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div class="dw">
+        <button class="ib" onclick="tg('np')" aria-label="Notifikasi"><i class="fa-regular fa-bell"></i><em id="nb" style="display:none">0</em></button>
+        <div class="dp" id="np"></div>
+      </div>
+      <button class="ib" onclick="M('cart',1)" aria-label="Keranjang"><i class="fa-solid fa-bag-shopping"></i><em id="cb">0</em></button>
+      <div class="dw">
+        <button class="ib" id="pb" onclick="prof()" aria-label="Akun"></button>
+        <div class="dp" id="pp" style="width:240px"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Kolom pencarian -->
+  <div class="sbar" id="sb">
+    <div class="wrap">
+      <label class="srch">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="q" placeholder="Cari pashmina, voal..." oninput="Q=this.value.toLowerCase();draw()" aria-label="Cari produk">
+      </label>
+    </div>
+  </div>
+</header>
+<main>
+  <!-- ===== HERO ===== -->
+  <div class="wrap hero">
+    <div>
+      <h1>Tampil Anggun &amp; Nyaman Setiap Hari bersama Aulips Hijab</h1>
+      <p>Didesain khusus wanita modern. Koleksi Pashmina Silk, Soft Voal Ultrafine, dan Hijab Instant berbahan dingin, mudah dibentuk, tegak di dahi, dan tidak menerawang.</p>
+      <a href="#katalog" class="btn b1">Lihat Katalog Produk <i class="fa-solid fa-arrow-right" style="font-size:16px;margin-left:6px"></i></a><a href="#katalog" onclick="cat('')" class="btn b2">Pilih Kategori</a>
+    </div>
+    <div class="hc"><div class="hp" id="hp"></div></div>
+  </div>
+
+  <!-- ===== FITUR UNGGULAN ===== -->
+  <div class="feat">
+    <div class="wrap fg">
+      <div class="fi"><i class="fa-regular fa-gem"></i><div><b>Bahan Premium</b><small>Lembut &amp; Adem</small></div></div>
+      <div class="fi"><i class="fa-solid fa-truck-fast"></i><div><b>Pengiriman Cepat</b><small>Pengiriman Setiap Hari</small></div></div>
+      <div class="fi"><i class="fa-solid fa-shield-heart"></i><div><b>Garansi Kualitas</b><small>100% Real Picture</small></div></div>
+      <div class="fi"><i class="fa-solid fa-headset"></i><div><b>Layanan CS Ramah</b><small>Siap Membantu 24/7</small></div></div>
+    </div>
+  </div>
+
+  <!-- ===== KATALOG PRODUK ===== -->
+  <section class="k" id="katalog">
+    <div class="wrap">
+      <div class="kh">
+        <div><span class="lab">Katalog Produk</span><h2>Pilihan Koleksi Hijab</h2></div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button id="addb" class="pill" style="display:none;background:var(--tc);color:#fff" onclick="openAdm()"><i class="fa-solid fa-plus"></i> Tambah produk</button>
+          <select class="so" id="so" onchange="draw()" aria-label="Urutkan"><option value="p">Urutkan: Terpopuler / Rating</option><option value="l">Harga termurah</option><option value="h">Harga tertinggi</option></select>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="grid" id="grid"></div>
+      <p id="empty" style="display:none;text-align:center;padding:60px 0;color:var(--mut)">Belum ada hijab yang cocok. Coba kata kunci lain atau pilih Semua Hijab.</p>
+    </div>
+  </section>
+
+  <!-- ===== ULASAN PEMBELI ===== -->
+  <section class="k" id="ulasan" style="padding-top:0">
+    <div class="wrap">
+      <div class="kh">
+        <div><span class="lab">Ulasan Pembeli</span><h2>Kata Mereka yang Sudah Pakai</h2></div>
+        <button class="pill" style="background:var(--tc);color:#fff" onclick="openRv()"><i class="fa-solid fa-pen"></i> Tulis ulasan</button>
+      </div>
+      <div class="rs" id="rs"></div>
+      <div class="rg" id="rg"></div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ / BANTUAN ===== -->
+  <section class="fq" id="bantuan">
+    <div class="in wrap">
+      <span class="lab">Pertanyaan Umum</span>
+      <h2>Bantuan &amp; FAQ</h2>
+      <div class="qa"><b><i>?</i>Apakah bahan hijab terawang?</b><p>Seluruh koleksi Aulips Hijab menggunakan serat kain pilihan berkualitas tinggi yang lembut, adem, dan tidak terawang saat digunakan.</p></div>
+      <div class="qa"><b><i>?</i>Bagaimana cara pemesanan?</b><p>Pilih hijab favorit Anda, masukkan ke keranjang, dan klik Checkout, isi data pembeli, lalu bayar lewat QRIS atau lanjutkan via WhatsApp bersama customer service kami.</p></div>
+      <div class="qa"><b><i>?</i>Apakah ada gratis ongkir?</b><p>Gratis ongkir ke seluruh Indonesia untuk pembelian minimal Rp 150.000. Masukkan kode AULIPS10 di keranjang untuk diskon 10%.</p></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fgd">
+      <div>
+        <div class="fl"><i aria-hidden="true"><svg viewBox="0 0 32 32" width="26" height="26"><use href="#lg"/></svg></i>Aulips Hijab</div>
+        <p>Penyedia modest fashion premium terpercaya untuk menemani setiap langkah keanggunanmu.</p>
+      </div>
+      <div>
+        <div class="fh">Hubungi Kami</div>
+        <a href="mailto:support@aulipshijab.com"><i class="fa-solid fa-envelope" style="color:#d99b8c;margin-right:10px"></i>support@aulipshijab.com</a>
+        <a href="#" onclick="wa('Halo Aulips Hijab, saya mau tanya...');return false"><i class="fa-brands fa-whatsapp" style="color:#d99b8c;margin-right:10px"></i>+62 856-0601-7891</a>
+      </div>
+    </div>
+    <div class="cp">&copy; 2026 Aulips Hijab. Seluruh hak cipta dilindungi.</div>
+  </div>
+</footer>
+
+<!-- ===== POPUP / MODAL ===== -->
+<!-- Login / daftar -->
+<div class="ov" id="auth" onclick="if(event.target==this)M('auth',0)">
+  <div class="md">
+    <button class="xx" onclick="M('auth',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3>Selamat datang</h3>
+    <div class="tabs"><button id="ti" onclick="tab('in')">Masuk</button><button id="tu" onclick="tab('up')">Daftar</button></div>
+    <p class="er" id="er"></p>
+    <form id="fin" onsubmit="doIn(event)">
+      <label class="l">Email<input id="li" type="email" required class="f" autocomplete="email" placeholder="nama@email.com"></label>
+      <label class="l">Kata sandi<input id="lp" type="password" required class="f" autocomplete="current-password"></label>
+      <button class="sub">Masuk</button>
+    </form>
+    <form id="fup" onsubmit="doUp(event)" style="display:none">
+      <label class="l">Nama lengkap<input id="rn" required class="f" autocomplete="name"></label>
+      <label class="l">Email<input id="ri" type="email" required class="f" autocomplete="email" placeholder="nama@email.com"></label>
+      <label class="l">Kata sandi (min. 6 karakter)<input id="rp" type="password" minlength="6" required class="f" autocomplete="new-password"></label>
+      <button class="sub">Buat akun</button>
+    </form>
+  </div>
+</div>
+<!-- Detail produk (diisi lewat JavaScript) -->
+<div class="ov" id="pd" onclick="if(event.target==this)M('pd',0)">
+  <div class="md w"><div id="pdc"></div></div>
+</div>
+<!-- Keranjang -->
+<div class="ov dr" id="cart" onclick="if(event.target==this)M('cart',0)">
+  <div class="md">
+    <button class="xx" onclick="M('cart',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3>Keranjang</h3>
+    <div id="cl" style="flex:1;overflow:auto"></div>
+    <div style="border-top:1px solid var(--line);padding-top:14px">
+      <input id="cv" class="f" placeholder="Kode promo (opsional)">
+      <p style="display:flex;justify-content:space-between;font-weight:700;margin-top:14px"><span>Total</span><span id="ct">Rp 0</span></p>
+      <button class="sub" id="cbtn" onclick="checkout()"><i class="fa-solid fa-lock"></i> Checkout</button>
+    </div>
+  </div>
+</div>
+<!-- Checkout -->
+<div class="ov" id="co" onclick="if(event.target==this)M('co',0)">
+  <div class="md w">
+    <button class="xx" onclick="M('co',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3>Checkout</h3>
+    <div class="cg">
+      <form onsubmit="pay(event)">
+        <b>Data pembeli</b>
+        <label class="l">Nama penerima<input id="bn" required class="f" autocomplete="name"></label>
+        <div class="g2"><label class="l">No. WhatsApp<input id="bp" type="tel" required pattern="[0-9+ \-]{9,16}" title="Contoh: 081234567890" class="f" autocomplete="tel" placeholder="081234567890"></label><label class="l">Email<input id="be" type="email" required class="f" autocomplete="email"></label></div>
+        <label class="l">Alamat lengkap<textarea id="ba" rows="2" required class="f" placeholder="Jalan, nomor rumah, RT/RW, kelurahan, kecamatan"></textarea></label>
+        <div class="g3"><label class="l">Kota/Kabupaten<input id="bk" required class="f"></label><label class="l">Provinsi<input id="bv" required class="f"></label><label class="l">Kode pos<input id="bz" required inputmode="numeric" pattern="[0-9]{5}" title="5 digit" class="f"></label></div>
+        <label class="l">Catatan untuk penjual (opsional)<input id="bc" class="f" placeholder="Mis. warna cadangan jika kosong"></label>
+        <label class="l">Metode pembayaran</label>
+        <div class="pm"><label><input type="radio" name="pm" value="qris" checked><span><i class="fa-solid fa-qrcode"></i> QRIS</span></label><label><input type="radio" name="pm" value="wa"><span><i class="fa-brands fa-whatsapp"></i> WhatsApp</span></label></div>
+        <button class="sub">Lanjut ke pembayaran</button>
+      </form>
+      <div id="cos"></div>
+    </div>
+  </div>
+</div>
+<!-- Tulis ulasan -->
+<div class="ov" id="rvm" onclick="if(event.target==this)M('rvm',0)">
+  <div class="md">
+    <button class="xx" onclick="M('rvm',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3>Tulis ulasan</h3>
+    <form onsubmit="saveR(event)">
+      <label class="l">Produk<select id="rpd" class="f"></select></label>
+      <label class="l">Penilaian</label>
+      <div class="sp" id="stp"></div>
+      <label class="l">Ulasan kamu<textarea id="rt" rows="4" required class="f" placeholder="Ceritakan bahan, warna, dan pengirimannya"></textarea></label>
+      <button class="sub">Kirim ulasan</button>
+    </form>
+  </div>
+</div>
+<!-- Admin: tambah / edit produk -->
+<div class="ov" id="adm" onclick="if(event.target==this)M('adm',0)">
+  <div class="md w">
+    <button class="xx" onclick="M('adm',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3 id="at">Tambah produk</h3>
+    <form onsubmit="saveP(event)">
+      <input type="hidden" id="ei">
+      <label class="l">Nama produk<input id="a1" required class="f"></label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label class="l">Kategori<select id="a2" class="f"></select></label><label class="l">Label di foto (mis. Favorit)<input id="a3" class="f"></label></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px"><label class="l">Harga (Rp)<input id="a4" type="number" min="0" required class="f"></label><label class="l">Harga coret<input id="a5" type="number" min="0" class="f"></label><label class="l">Stok<input id="a6" type="number" min="0" class="f"></label><label class="l">Rating<input id="a7" type="number" min="0" max="5" step="0.1" class="f" value="4.9"></label></div>
+      <label class="l">Keterangan singkat<input id="a8" class="f" placeholder="100% Premium Silk Material"></label>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label class="l">Warna (pisahkan koma)<input id="a9" class="f" placeholder="Hitam, Cream, Mocca"></label><label class="l">Ukuran (pisahkan koma)<input id="a10" class="f" placeholder="75x175, 90x185"></label></div>
+      <label class="l">Foto produk<input id="a11" type="file" accept="image/*" class="f" onchange="up(event,'img')"></label>
+      <p style="font-size:12px;color:var(--mut);margin-top:6px" id="imn"></p>
+      <button class="sub">Simpan produk</button>
+    </form>
+    <label class="l" style="margin-top:26px;border-top:1px solid var(--line);padding-top:18px">Foto beranda (kartu besar di bagian atas)<input type="file" accept="image/*" class="f" onchange="up(event,'hero')"></label>
+    <label class="l" style="margin-top:18px">Gambar QRIS toko (tampil saat pembeli memilih QRIS)<input type="file" accept="image/*" class="f" onchange="up(event,'qris')"></label>
+  </div>
+</div>
+<!-- Admin: kelola katalog -->
+<div class="ov" id="mng" onclick="if(event.target==this)M('mng',0)">
+  <div class="md w">
+    <button class="xx" onclick="M('mng',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><h3>Kelola katalog</h3>
+    <div class="mh"><button class="pill" style="background:var(--tc);color:#fff" onclick="M('mng',0);openAdm()"><i class="fa-solid fa-plus"></i> Tambah produk</button><label class="pill up"><i class="fa-regular fa-image"></i> Foto beranda<input type="file" accept="image/*" hidden onchange="up(event,'hero')"></label><label class="pill up"><i class="fa-solid fa-qrcode"></i> Gambar QRIS<input type="file" accept="image/*" hidden onchange="up(event,'qris')"></label></div>
+    <div id="mgl"></div>
+  </div>
+</div>
+<!-- Toast -->
+<div class="tt" id="tt" style="display:none"></div>
+<script>
+/* ===== 1. KONFIGURASI ===== */
+// ADMIN_EMAIL = email yang otomatis jadi ADMIN saat mendaftar (ganti dengan emailmu)
+const ADMIN_EMAIL = 'dedeauliaa03@gmail.com', WA = '6285606017891';  
+
+/* ===== 2. FUNGSI BANTU ===== */
+// $ = ambil elemen | rp = format Rupiah | M = buka (1) / tutup (0) popup | esc = amankan teks | st = bintang teks
+const $ = id => document.getElementById(id),
+  rp = n => 'Rp ' + Number(n).toLocaleString('id-ID'),
+  M = (id, o) => $(id).classList.toggle('on', !!o),
+  esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c])),
+  st = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+function toast(m) {  // Pesan melayang selama 3 detik
+  const t = $('tt');
+  t.textContent = m; t.style.display = 'block';
+  clearTimeout(t.h);
+  t.h = setTimeout(() => t.style.display = 'none', 3000)
+}
+// Baca / simpan localStorage (nilai bawaan jika kosong atau rusak; peringatan jika penuh)
+const ld = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v } catch (e) { return d } };
+const sv = (k, v) => {
+  try { localStorage.setItem(k, JSON.stringify(v)); return true }
+  catch (e) { toast('Penyimpanan penuh. Pakai foto yang lebih kecil.'); return false }
+};
+// Hash kata sandi (SHA-256) sebelum disimpan
+const H = async s => {
+  if (!(window.crypto && crypto.subtle)) return btoa(unescape(encodeURIComponent(s)));
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('aul:' + s));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('')
+};
+const wa = t => window.open('https://wa.me/6285606017891' + WA + '?text=' + encodeURIComponent(t), '_blank');  // Buka WhatsApp dengan pesan terisi
+// Kode warna tiap nama warna produk
+const COL = {Hitam: '#222', Putih: '#f5f3ee', Cream: '#e8d9c0', Mocca: '#a47c5c', Coklat: '#6b4a35', 'Dusty Pink': '#d8a7b1', Mauve: '#9d7081', Sage: '#9caf88',
+  Olive: '#6b7345', Navy: '#243b5c', 'Dusty Blue': '#8fa6bf', Maroon: '#7a2a3a', Abu: '#9a9a9a', Lilac: '#b9a6cf', Peach: '#f2b8a0', Mint: '#b5d8c7'};
+const col = n => COL[n] || COL[Object.keys(COL).find(k => k.toLowerCase() == String(n).toLowerCase())] || '#c9b8ac';
+function sh(h, a) {  // Terangkan (a positif) atau gelapkan (a negatif) warna hex
+  const n = parseInt(h.slice(1), 16), t = a < 0 ? 0 : 255, k = Math.abs(a), f = v => Math.round(v + (t - v) * k);
+  return '#' + [n >> 16, n >> 8 & 255, n & 255].map(f).map(v => v.toString(16).padStart(2, '0')).join('')
+}
+// Latar gradien dari satu warna (untuk produk tanpa foto) & blok gambar produk
+const bgOf = c => {
+  let h = col(c);
+  if (h.length == 4) h = '#' + [...h.slice(1)].map(x => x + x).join('');
+  return `background:linear-gradient(120deg,${sh(h,.18)} 0%,${h} 38%,${sh(h,-.15)} 62%,${h} 100%)`
+};
+const pic = (p, c, inner = '') => `<div class="pic" style="${p.img?'':bgOf(c||p.col[0])}">${p.img?`<img src="${p.img}" alt="${esc(p.t)}" loading="lazy">`:''}${inner}</div>`;
+// Bintang yang bisa diklik di form ulasan
+const stars = (id, v, fn) => $(id).innerHTML = [1, 2, 3, 4, 5].map(i => `<button type="button" class="${i<=v?'on':''}" onclick="${fn}(${i})" aria-label="${i} bintang">★</button>`).join('');
+
+/* ===== 3. DATA & STATE ===== */
+// Kategori: [kode, nama tampil]
+const CATS = [['pashmina', 'Pashmina'], ['voal', 'Voal Premium'], ['instant', 'Instant & Bergo'], ['segiempat', 'Segi Empat']],
+  cn = k => (CATS.find(c => c[0] == k) || [0, k])[1];
+// Pembuat data produk: id, nama, kategori, harga, harga coret, terjual, stok, rating, label, keterangan, warna, ukuran
+const mk = (id, t, c, p, old, s, stock, r, tag, d, cl, sz) => ({id, t, c, p, old, s, stock, r, tag, d, col: cl.split(', '), sz: sz.split(', '), img: ''});
+// Produk awal (setelah diubah admin tersimpan di localStorage)
+let P = ld('aul_p', null) || [
+  mk(1, 'Pashmina Silk Plisket', 'pashmina', 49000, 70000, 1240, 48, 4.9, 'Populer', '100% Premium Silk Material', 'Hitam, Cream, Mocca, Dusty Pink, Sage, Navy', '75x175, 90x185'),
+  mk(2, 'Voal Ultrafine Laser Cut', 'voal', 39000, 55000, 980, 60, 4.9, 'Limited', 'Ringan, adem, tidak menerawang', 'Putih, Cream, Dusty Pink, Mint, Peach, Dusty Blue', '110x110, 120x120'),
+  mk(3, 'Bergo Jersey Daily', 'instant', 32000, 0, 1530, 75, 5, 'Favorit', 'Tinggal pakai, nyaman seharian', 'Hitam, Abu, Coklat, Navy, Olive, Maroon', 'All size'),
+  mk(4, 'Segi Empat Cotton Polos', 'segiempat', 25000, 35000, 610, 90, 4.8, 'Terlaris', 'Mudah dibentuk, jatuh rapi', 'Putih, Cream, Sage, Dusty Blue, Peach, Mauve', '110x110, 120x120'),
+  mk(5, 'Pashmina Ceruty Baby Doll', 'pashmina', 45000, 0, 1110, 30, 4.9, '', 'Lembut dan tidak mudah kusut', 'Hitam, Mocca, Mauve, Olive, Dusty Pink, Navy', '75x175, 90x185'),
+  mk(6, 'Voal Motif Elegance', 'voal', 65000, 80000, 420, 22, 4.7, 'Baru', 'Motif eksklusif, tegak di dahi', 'Maroon, Navy, Olive, Mauve, Cream, Coklat', '110x110, 120x120')
+];
+const day = 86400000; // satu hari (ms), untuk tanggal contoh ulasan
+let HERO = ld('aul_hero', ''),                       // foto beranda (data URL)
+  QR = ld('aul_qris', ''),                           // gambar QRIS toko (data URL)
+  USERS = ld('aul_u', []),                           // akun terdaftar
+  cart = ld('aul_c', []),                            // isi keranjang
+  user = USERS.find(u => u.e == ld('aul_s', '')),    // akun yang sedang login
+  NT = ld('aul_n', [{t: 'Selamat datang di Aulips Hijab', m: 'Pakai kode AULIPS10 untuk diskon 10%. Gratis ongkir min. Rp 150.000.', d: Date.now(), r: 0}]),
+  RV = ld('aul_r', [
+    {n: 'Nadia', r: 5, p: 'Pashmina Silk Plisket', t: 'Bahannya adem dan jatuhnya rapi. Tidak menerawang sama sekali.', d: Date.now() - 3 * day},
+    {n: 'Sinta', r: 5, p: 'Voal Ultrafine Laser Cut', t: 'Tegak di dahi dan mudah dibentuk. Warnanya sesuai foto.', d: Date.now() - 9 * day},
+    {n: 'Rahma', r: 4, p: 'Bergo Jersey Daily', t: 'Nyaman dipakai seharian. Pengiriman cepat dan packing aman.', d: Date.now() - 16 * day}
+  ]),
+  C = '', Q = '',        // kategori aktif, kata kunci pencarian
+  D = {},                // pilihan di popup detail produk
+  RS = 5,                // bintang terpilih di form ulasan
+  O = null,              // pesanan yang sedang diproses
+  NI = '';               // foto produk yang disiapkan di form admin
+const isAdmin = () => user && user.e == ADMIN_EMAIL.trim().toLowerCase();
+// Hubungkan ulasan lama ke produknya lewat id
+RV.forEach(r => { if (r.pid == null) { const p = P.find(x => x.t == r.p); if (p) r.pid = p.id } });
+
+/* ===== 4. HEADER: pencarian, notifikasi, akun ===== */
+function tg(id) {  
+  const e = $(id), o = !e.classList.contains('on');
+  ['np', 'pp', 'sb'].forEach(i => $(i).classList.remove('on'));
+  if (o) { e.classList.add('on'); if (id == 'sb') $('q').focus() }
+}
+// Klik di luar dropdown menutup notifikasi & menu akun
+document.addEventListener('click', e => { if (!e.target.closest('.dw,.ib')) ['np', 'pp'].forEach(i => $(i).classList.remove('on')) });
+const prof = () => user ? tg('pp') : M('auth', 1);  // Ikon akun: sudah login -> menu akun, belum -> popup login
+function ago(t) {  // Waktu relatif, mis. '5 menit lalu'
+  const m = Math.floor((Date.now() - t) / 60000);
+  return m < 1 ? 'Baru saja' : m < 60 ? m + ' menit lalu' : m < 1440 ? Math.floor(m / 60) + ' jam lalu' : Math.floor(m / 1440) + ' hari lalu'
+}
+// Tambah notifikasi (maks. 20) & tandai semua dibaca
+function notif(t, m) { NT.unshift({t, m, d: Date.now(), r: 0}); NT = NT.slice(0, 20); sv('aul_n', NT); nUI() }
+function nRead() { NT.forEach(n => n.r = 1); sv('aul_n', NT); nUI() }
+function nUI() {  // Gambar ulang badge & daftar notifikasi
+  const u = NT.filter(n => !n.r).length;
+  $('nb').style.display = u ? '' : 'none';
+  $('nb').textContent = u;
+  $('np').innerHTML = `<div class="dh"><b>Notifikasi</b><button onclick="nRead()">Tandai dibaca</button></div>` +
+    (NT.map(n => `<div class="ni ${n.r?'':'nw'}"><b>${esc(n.t)}</b><span>${esc(n.m)}</span><small>${ago(n.d)}</small></div>`).join('') || '<p class="em">Belum ada notifikasi.</p>')
+}
+
+/* ===== 5. LOGIN / DAFTAR ===== */
+function tab(t) {  // Pindah tab Masuk / Daftar
+  $('fin').style.display = t == 'in' ? 'block' : 'none';
+  $('fup').style.display = t == 'up' ? 'block' : 'none';
+  $('er').style.display = 'none';
+  $('ti').className = t == 'in' ? 'on' : '';
+  $('tu').className = t == 'up' ? 'on' : ''
+}
+const err = m => { $('er').textContent = m; $('er').style.display = 'block' };
+async function doIn(e) {
+  e.preventDefault();
+  const em = $('li').value.trim().toLowerCase(), h = await H($('lp').value), u = USERS.find(x => x.e == em && x.h == h);
+  u ? login(u) : err('Email atau kata sandi salah. Belum punya akun? Buka tab Daftar.')
+}
+async function doUp(e) {
+  e.preventDefault();
+  const em = $('ri').value.trim().toLowerCase();
+  if (USERS.some(x => x.e == em)) return err('Email ini sudah terdaftar. Silakan masuk.');
+  const u = {n: $('rn').value.trim(), e: em, h: await H($('rp').value)};
+  USERS.push(u);
+  if (sv('aul_u', USERS)) login(u)
+}
+function login(u) { user = u; sv('aul_s', u.e); M('auth', 0); ui(); toast('Halo, ' + u.n + '!') }
+function logout() { user = null; sv('aul_s', ''); ui(); toast('Kamu sudah keluar.') }
+function ui() {  // Perbarui tampilan sesuai status login (tombol admin, avatar, menu akun)
+  $('addb').style.display = isAdmin() ? '' : 'none';
+  $('pp').classList.remove('on');
+  $('pb').innerHTML = user ? `<span>${esc(user.n[0].toUpperCase())}</span>` : '<i class="fa-regular fa-user"></i>';
+  $('pp').innerHTML = user
+    ? `<div class="dh"><b style="overflow:hidden;text-overflow:ellipsis">${esc(user.n)}</b></div><p class="em" style="text-align:left;padding:10px 16px;word-break:break-all">${esc(user.e)}${isAdmin()?' · Admin':''}</p>` +
+      `${isAdmin()?'<button class="lo" style="color:var(--ink)" onclick="openMg()"><i class="fa-solid fa-store"></i> Kelola katalog</button>':''}` +
+      `<button class="lo" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>`
+    : '';
+  rvUI(); draw()
+}
+
+/* ===== 6. KATALOG PRODUK ===== */
+function draw() {  // Gambar ulang chip kategori, grid produk (filter, cari, urutan) dan kartu hero
+  $('chips').innerHTML = [['', 'Semua Hijab'], ...CATS].map(c => `<button class="${C==c[0]?'on':''}" onclick="cat('${c[0]}')">${c[1]}</button>`).join('');
+  const s = $('so').value,
+    l = P.filter(p => (!C || p.c == C) && (p.t + ' ' + p.col.join(' ') + ' ' + cn(p.c)).toLowerCase().includes(Q))
+      .sort(s == 'l' ? (a, b) => a.p - b.p : s == 'h' ? (a, b) => b.p - a.p : (a, b) => b.r - a.r || b.s - a.s);
+  $('empty').style.display = l.length ? 'none' : 'block';
+  $('grid').innerHTML = l.map(p => `<article class="card" onclick="openP(${p.id})">${pic(p, 0, `${p.tag?`<span class="tag">${esc(p.tag)}</span>`:''}<button class="plus" aria-label="Pilih ${esc(p.t)}">+</button>`)}
+ <div class="mt"><span>${esc(cn(p.c).split(' ')[0])}</span><s><i class="fa-solid fa-star" style="color:#e0a43a"></i> ${p.r}</s></div>
+ <h3>${esc(p.t)}</h3>${p.d?`<p class="d">${esc(p.d)}</p>`:''}
+ <p class="pr">${rp(p.p)}${p.old?`<s>${rp(p.old)}</s>`:''}</p>
+ ${isAdmin()?`<div class="ad"><button onclick="event.stopPropagation();openAdm(${p.id})">Edit</button><button class="x" onclick="event.stopPropagation();delP(${p.id})">Hapus</button></div>`:''}</article>`).join('');
+  const f = P[0];
+  $('hp').innerHTML = (HERO ? `<img src="${HERO}" alt="Koleksi Aulips Hijab">` : `<div style="position:absolute;inset:0;${f?bgOf(f.col[0]):''}"></div>`)
+}
+const cat = k => { C = k; draw() };
+
+/* ===== 7. DETAIL PRODUK ===== */
+function openP(id) { const p = P.find(x => x.id == id); D = {id, c: p.col[0], z: p.sz[0], q: 1}; rD(); M('pd', 1) }
+const dset = (k, v) => { D[k] = v; rD() };  // Ubah pilihan warna ('c') atau ukuran ('z')
+// Ubah jumlah beli (tidak melebihi stok)
+function dq(d) { D.q = Math.max(1, Math.min(P.find(x => x.id == D.id).stock || 1, D.q + d)); rD() }
+function rD() {
+  const p = P.find(x => x.id == D.id);
+  $('pdc').innerHTML = `<button class="xx" onclick="M('pd',0)" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><div class="dg">${pic(p, D.c)}
+ <div><span class="lab" style="font-size:13px">${cn(p.c)}</span><h3 style="margin:4px 0 6px;font-size:30px">${esc(p.t)}</h3>
+ <p style="font-size:13px;color:var(--mut)"><i class="fa-solid fa-star" style="color:#e0a43a"></i> ${p.r} · ${p.s.toLocaleString('id-ID')} terjual · stok ${p.stock||'habis'}</p>
+ <p class="pr" style="margin:12px 0;font-size:26px">${rp(p.p)}${p.old?`<s>${rp(p.old)}</s>`:''}</p><p style="color:#6b5448;font-size:14px">${esc(p.d||'')}</p>
+ <p style="margin-top:18px;font-size:14px">Warna: <b>${esc(D.c)}</b></p><div class="sw">${p.col.map(x=>`<button class="${x==D.c?'on':''}" style="background:${col(x)}" title="${esc(x)}" aria-label="${esc(x)}" onclick="dset('c','${esc(x)}')"></button>`).join('')}</div>
+ <p style="margin-top:18px;font-size:14px">Ukuran (cm)</p><div class="sw sz">${p.sz.map(z=>`<button class="${z==D.z?'on':''}" style="width:auto;height:auto;border-radius:12px" onclick="dset('z','${esc(z)}')">${esc(z)}</button>`).join('')}</div>
+ <div class="q">Jumlah <button onclick="dq(-1)" aria-label="Kurangi">−</button>${D.q}<button onclick="dq(1)" aria-label="Tambah">+</button></div>
+ <button class="sub" ${p.stock?'':'disabled'} onclick="add()">Tambah ke keranjang</button></div></div>`
+}
+
+/* ===== 8. KERANJANG ===== */
+// lines = isi keranjang + data produknya | total = total harga
+const lines = () => cart.map(i => ({...i, p: P.find(p => p.id == i.id)})).filter(i => i.p),
+  total = () => lines().reduce((s, i) => s + i.p.p * i.q, 0);
+function add() {  // Tambah ke keranjang (item sama digabung)
+  const f = cart.find(i => i.id == D.id && i.c == D.c && i.z == D.z);
+  f ? f.q += D.q : cart.push({id: D.id, c: D.c, z: D.z, q: D.q});
+  M('pd', 0); cUI(); toast('Masuk keranjang')
+}
+// Ubah jumlah item (dihapus jika kurang dari 1)
+function qty(k, d) { cart[k].q += d; if (cart[k].q < 1) cart.splice(k, 1); cUI() }
+function cUI() {  // Simpan & gambar ulang keranjang (badge, daftar item, total)
+  sv('aul_c', cart);
+  const l = lines();
+  $('cb').textContent = l.reduce((s, i) => s + i.q, 0);
+  $('ct').textContent = rp(total());
+  $('cbtn').disabled = !l.length;
+  $('cl').innerHTML = l.map((i, k) => `<div class="ci">${pic(i.p, i.c)}<div class="m"><b style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(i.p.t)}</b><span style="color:var(--mut)">${esc(i.c)} · ${esc(i.z)}</span><b style="display:block;color:var(--tc2)">${rp(i.p.p)}</b></div><div class="q" style="margin:0"><button onclick="qty(${k},-1)" aria-label="Kurangi">−</button>${i.q}<button onclick="qty(${k},1)" aria-label="Tambah">+</button></div></div>`).join('')
+    || '<p style="text-align:center;color:var(--mut);padding:50px 0">Keranjang masih kosong. Pilih hijab, tentukan warna, lalu tambahkan.</p>'
+}
+
+/* ===== 9. CHECKOUT & PEMBAYARAN ===== */
+function checkout() {  // Buka checkout (wajib login) dan isi otomatis data pembeli terakhir
+  if (!user) { M('cart', 0); M('auth', 1); return toast('Masuk dulu untuk checkout.') }
+  const b = ld('aul_b', {});
+  [['bn', b.n || user.n], ['bp', b.p], ['be', b.e || user.e], ['ba', b.a], ['bk', b.k], ['bv', b.v], ['bz', b.z], ['bc', '']].forEach(([i, v]) => $(i).value = v || '');
+  coSum(); M('cart', 0); M('co', 1)
+}
+function calc() {  // Subtotal, diskon kode AULIPS10 (10%) dan total bayar
+  const v = $('cv').value.trim().toUpperCase(), t = total(), d = v == 'AULIPS10' ? Math.round(t * .1) : 0;
+  return {v, t, d, g: t - d}
+}
+function coSum() {  // Ringkasan pesanan di checkout
+  const c = calc();
+  $('cos').innerHTML = `<b>Ringkasan pesanan</b><div style="margin-top:10px">` +
+    lines().map(i => `<div class="ci">${pic(i.p, i.c)}<div class="m"><b style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(i.p.t)}</b><span style="color:var(--mut)">${esc(i.c)} · ${esc(i.z)} · ${i.q}x</span></div><b>${rp(i.p.p*i.q)}</b></div>`).join('') +
+    `</div><p class="sr"><span>Subtotal</span><span>${rp(c.t)}</span></p>${c.d?`<p class="sr"><span>Promo AULIPS10</span><span>-${rp(c.d)}</span></p>`:''}<p class="sr tot"><span>Total</span><span>${rp(c.g)}</span></p>${c.g>=150000?'<small style="color:var(--tc)">Gratis ongkir</small>':''}`
+}
+function pay(e) {  // Simpan data pembeli, lalu lanjut ke QRIS atau WhatsApp
+  e.preventDefault();
+  const c = calc(), g = i => $(i).value.trim();
+  if (c.v && !c.d) toast('Kode promo tidak dikenali, lanjut tanpa promo.');
+  const b = {n: g('bn'), p: g('bp'), e: g('be'), a: g('ba'), k: g('bk'), v: g('bv'), z: g('bz'), c: g('bc')};
+  sv('aul_b', b);
+  O = {no: 'AUL' + Date.now().toString().slice(-6), b, c, L: lines(), pm: document.querySelector('[name=pm]:checked').value};
+  O.pm == 'qris' ? qrisView() : send()
+}
+function qrisView() {  // Tampilan pembayaran QRIS
+  $('cos').innerHTML = `<div class="qr"><b>Bayar dengan QRIS</b><small>Pesanan ${O.no}</small>${QR?`<img src="${QR}" alt="QRIS Aulips Hijab">`:'<div class="qn">QRIS toko belum diunggah. Admin bisa mengunggahnya lewat tombol Tambah produk.</div>'}<p class="sr tot"><span>Total bayar</span><span>${rp(O.c.g)}</span></p><small>Scan dengan aplikasi bank atau e-wallet, lalu kirim bukti bayar lewat WhatsApp.</small><button class="sub" onclick="send()"><i class="fa-brands fa-whatsapp"></i> Saya sudah bayar</button><button class="pill" style="width:100%;margin-top:10px" onclick="coSum()">Kembali ke ringkasan</button></div>`
+}
+function send() {  // Kirim pesanan lewat WhatsApp, buat notifikasi, kosongkan keranjang
+  const {no, b, c, pm, L} = O;
+  wa(`Halo Aulips Hijab, saya mau pesan (No. ${no}):\n\n` + L.map((i, n) => `${n+1}. ${i.p.t} - ${i.c}, ${i.z} (${i.q}x) = ${rp(i.p.p*i.q)}`).join('\n') +
+    `\n\n${c.d?'Promo AULIPS10: -'+rp(c.d)+'\n':''}Total: ${rp(c.g)}${c.g>=150000?' (gratis ongkir)':''}\nPembayaran: ${pm=='qris'?'QRIS (bukti bayar saya lampirkan)':'Konfirmasi via WhatsApp'}\n\nData pembeli\nNama: ${b.n}\nWhatsApp: ${b.p}\nEmail: ${b.e}\nAlamat: ${b.a}, ${b.k}, ${b.v} ${b.z}${b.c?'\nCatatan: '+b.c:''}`);
+  notif('Pesanan ' + no + ' dibuat', pm == 'qris' ? 'Menunggu verifikasi pembayaran QRIS dari admin.' : 'Lanjutkan di WhatsApp untuk konfirmasi pesanan.');
+  cart = []; cUI(); M('co', 0)
+}
+
+/* ===== 10. ULASAN PEMBELI ===== */
+function rvUI() {  // Ringkasan rating & daftar ulasan
+  const n = RV.length, a = n ? RV.reduce((s, r) => s + r.r, 0) / n : 0;
+  $('rs').innerHTML = n ? `<div class="av"><b>${a.toFixed(1)}</b><span class="stx">${st(Math.round(a))}</span><small>dari ${n} ulasan</small></div>` : '';
+  $('rg').innerHTML = RV.map((r, i) => `<article class="rc"><div class="rh"><i>${esc((r.n[0]||'?').toUpperCase())}</i><div><b>${esc(r.n)}</b><small>${new Date(r.d).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}</small></div></div><span class="stx">${st(r.r)}</span><p>${esc(r.t)}</p><small class="rp">${esc((P.find(x=>x.id==r.pid)||{}).t||r.p)}</small>${isAdmin()?`<button class="rx" onclick="delR(${i})">Hapus</button>`:''}</article>`).join('')
+    || '<p class="em">Belum ada ulasan. Jadilah yang pertama menulis.</p>'
+}
+const sRate = n => { RS = n; stars('stp', n, 'sRate') };
+function openRv() {  // Buka popup tulis ulasan (wajib login)
+  if (!user) { M('auth', 1); return toast('Masuk dulu untuk menulis ulasan.') }
+  $('rpd').innerHTML = P.map(p => `<option value="${p.id}">${esc(p.t)}</option>`).join('');
+  $('rt').value = '';
+  sRate(5); M('rvm', 1)
+}
+function saveR(e) { e.preventDefault(); if (putR(+$('rpd').value, RS, $('rt').value.trim())) { rvUI(); M('rvm', 0); toast('Terima kasih atas ulasannya!') } }
+function delR(i) { if (isAdmin() && confirm('Hapus ulasan ini?')) { RV.splice(i, 1); sv('aul_r', RV); rvUI() } }  // Hapus ulasan (admin)
+
+/* ===== 11. SIMPAN ULASAN ===== */
+function putR(pid, rate, t) {  // Simpan ulasan: satu per pengguna per produk (menimpa yang lama)
+  const p = P.find(x => x.id == pid);
+  if (!p || !user) return false;
+  const o = {n: user.n, e: user.e, r: rate, pid: p.id, p: p.t, t, d: Date.now()}, k = RV.findIndex(r => r.pid == p.id && r.e == user.e);
+  k >= 0 ? RV[k] = o : RV.unshift(o);
+  return sv('aul_r', RV)
+}
+
+/* ===== 12. ADMIN: kelola produk & gambar ===== */
+function openAdm(id) {  // Buka form tambah / edit produk (tanpa id = produk baru)
+  const p = P.find(x => x.id == id) || {};
+  $('a2').innerHTML = CATS.map(c => `<option value="${c[0]}">${c[1]}</option>`).join('');
+  $('ei').value = p.id || '';
+  $('at').textContent = p.id ? 'Edit produk' : 'Tambah produk';
+  $('imn').textContent = p.img ? 'Foto sudah ada. Pilih file baru untuk mengganti.' : '';
+  $('a11').value = '';
+  NI = p.img || '';
+  [['a1', p.t], ['a2', p.c || 'pashmina'], ['a3', p.tag], ['a4', p.p], ['a5', p.old || ''], ['a6', p.stock], ['a7', p.r ?? 4.9], ['a8', p.d], ['a9', p.col && p.col.join(', ')], ['a10', p.sz && p.sz.join(', ')]]
+    .forEach(([i, v]) => $(i).value = v ?? '');
+  M('adm', 1)
+}
+function shrink(f, max, type, cb) {  // Perkecil gambar lalu kirim hasilnya (data URL) ke callback
+  const r = new FileReader();
+  r.onload = x => {
+    const im = new Image();
+    im.onload = () => {
+      const k = Math.min(1, max / Math.max(im.width, im.height)), c = document.createElement('canvas');
+      c.width = im.width * k; c.height = im.height * k;
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      cb(c.toDataURL(type, .82))
+    };
+    im.src = x.target.result
+  };
+  r.readAsDataURL(f)
+}
+function up(e, w) {  // Unggah gambar: 'hero' (foto beranda), 'qris', atau foto produk
+  const f = e.target.files[0];
+  if (!f) return;
+  shrink(f, {hero: 1200, qris: 700}[w] || 800, w == 'qris' ? 'image/png' : 'image/jpeg', d => {
+    if (w == 'hero') { HERO = d; if (sv('aul_hero', HERO)) { draw(); toast('Foto beranda diganti.') } }
+    else if (w == 'qris') { QR = d; if (sv('aul_qris', QR)) toast('QRIS tersimpan.') }
+    else { NI = d; $('imn').textContent = 'Foto siap disimpan.' }
+  })
+}
+function saveP(e) {  // Simpan produk (baru / hasil edit)
+  e.preventDefault();
+  if (!isAdmin()) return;
+  const sp = s => s.split(',').map(x => x.trim()).filter(Boolean), id = +$('ei').value;
+  const d = {t: $('a1').value.trim(), c: $('a2').value, tag: $('a3').value.trim(), p: +$('a4').value, old: +$('a5').value || 0, stock: +$('a6').value || 0, r: +$('a7').value || 5,
+    d: $('a8').value.trim(), col: sp($('a9').value).length ? sp($('a9').value) : ['Hitam'], sz: sp($('a10').value).length ? sp($('a10').value) : ['All size'], img: NI};
+  if (id) Object.assign(P.find(p => p.id == id), d); else P.unshift({id: Date.now(), s: 0, ...d});
+  if (sv('aul_p', P)) { draw(); cUI(); M('adm', 0); toast('Produk tersimpan.') }
+}
+function delP(id) {  // Hapus produk beserta isi keranjang & ulasannya
+  if (isAdmin() && confirm('Hapus produk ini dari katalog?')) {
+    P = P.filter(p => p.id != id); cart = cart.filter(i => i.id != id); RV = RV.filter(r => r.pid != id);
+    sv('aul_p', P); sv('aul_r', RV);
+    draw(); cUI(); rvUI(); mgUI()
+  }
+}
+// Popup Kelola katalog
+function openMg() { if (!isAdmin()) return; $('pp').classList.remove('on'); mgUI(); M('mng', 1) }
+function mgUI() {
+  $('mgl').innerHTML = P.map(p => `<div class="mr">${pic(p, 0)}<div class="mi"><b>${esc(p.t)}</b><small>${esc(cn(p.c))}</small></div><label>Harga (Rp)<input type="number" min="0" value="${p.p}" class="f" onchange="qe(${p.id},'p',this.value)"></label><label>Stok<input type="number" min="0" value="${p.stock||0}" class="f" onchange="qe(${p.id},'stock',this.value)"></label><div class="ma"><label class="pill up">Ganti foto<input type="file" accept="image/*" hidden onchange="upP(event,${p.id})"></label><button onclick="M('mng',0);openAdm(${p.id})">Edit</button><button class="x" onclick="delP(${p.id})">Hapus</button></div></div>`).join('')
+    || '<p class="em">Belum ada produk. Klik Tambah produk.</p>'
+}
+function qe(id, k, v) {  // Ubah cepat harga / stok dari daftar kelola
+  if (!isAdmin()) return;
+  P.find(x => x.id == id)[k] = Math.max(0, +v || 0);
+  if (sv('aul_p', P)) { draw(); cUI(); toast('Tersimpan.') }
+}
+function upP(e, id) {  // Ganti foto produk dari daftar kelola
+  const f = e.target.files[0];
+  if (!f || !isAdmin()) return;
+  shrink(f, 800, 'image/jpeg', d => {
+    const p = P.find(x => x.id == id), o = p.img;
+    p.img = d;
+    if (sv('aul_p', P)) { draw(); cUI(); mgUI(); toast('Foto diganti.') } else p.img = o
+  })
+}
+
+/* ===== 13. JALANKAN SAAT HALAMAN DIMUAT ===== */
+tab('in'); ui(); cUI(); nUI();
+</script>
+</body>
+</html>
